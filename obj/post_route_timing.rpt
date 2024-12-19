@@ -1,0 +1,108 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+| Date         : Wed Dec 11 15:49:35 2024
+| Host         : eecs-digital-35 running 64-bit Ubuntu 24.04.1 LTS
+| Command      : report_timing -file obj/post_route_timing.rpt
+| Design       : top_level
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.183ns  (required time - arrival time)
+  Source:                 ram_addra0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by clk_pixel_cw_hdmi  {rise@0.000ns fall@6.734ns period=13.468ns})
+  Destination:            renderer_buffer/BRAM_reg_1_8/WEA[0]
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_pixel_cw_hdmi  {rise@0.000ns fall@6.734ns period=13.468ns})
+  Path Group:             clk_pixel_cw_hdmi
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            13.468ns  (clk_pixel_cw_hdmi rise@13.468ns - clk_pixel_cw_hdmi rise@0.000ns)
+  Data Path Delay:        12.566ns  (logic 8.554ns (68.071%)  route 4.012ns (31.929%))
+  Logic Levels:           7  (CARRY4=4 DSP48E1=1 LUT2=2)
+  Clock Path Skew:        -0.343ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.000ns = ( 11.468 - 13.468 ) 
+    Source Clock Delay      (SCD):    -2.160ns
+    Clock Pessimism Removal (CPR):    -0.503ns
+  Clock Uncertainty:      0.210ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.414ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pixel_cw_hdmi rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    wizard_migcam/CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  wizard_migcam/clkin1_ibufg/O
+                         net (fo=1, routed)           1.253     2.735    wizard_migcam/clk_in1_cw_fast
+    PLLE2_ADV_X1Y2       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
+                                                     -8.591    -5.856 r  wizard_migcam/plle2_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.713    -4.143    wizard_migcam/clk_100_cw_fast
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096    -4.047 r  wizard_migcam/clkout1_buf/O
+                         net (fo=1, routed)           1.809    -2.238    wizard_hdmi/sysclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.922    -6.159 r  wizard_hdmi/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           2.018    -4.141    wizard_hdmi/clk_pixel_cw_hdmi
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096    -4.045 r  wizard_hdmi/clkout1_buf/O
+                         net (fo=67629, routed)       1.885    -2.160    clk_pixel
+    DSP48_X1Y61          DSP48E1                                      r  ram_addra0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X1Y61          DSP48E1 (Prop_dsp48e1_CLK_PCOUT[47])
+                                                      5.515     3.355 r  ram_addra0/PCOUT[47]
+                         net (fo=1, routed)           0.002     3.357    ram_addra0_n_106
+    DSP48_X1Y62          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[2])
+                                                      1.518     4.875 r  ram_addra/P[2]
+                         net (fo=2, routed)           1.089     5.964    full_render/pipe_vcount2/P[1]
+    SLICE_X45Y155        LUT2 (Prop_lut2_I1_O)        0.124     6.088 r  full_render/pipe_vcount2/BRAM_reg_0_0_i_39/O
+                         net (fo=1, routed)           0.000     6.088    full_render/pipe_vcount2/BRAM_reg_0_0_i_39_n_0
+    SLICE_X45Y155        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     6.638 r  full_render/pipe_vcount2/BRAM_reg_0_0_i_6/CO[3]
+                         net (fo=1, routed)           0.000     6.638    full_render/pipe_vcount2/BRAM_reg_0_0_i_6_n_0
+    SLICE_X45Y156        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.752 r  full_render/pipe_vcount2/BRAM_reg_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     6.752    full_render/pipe_vcount2/BRAM_reg_0_0_i_5_n_0
+    SLICE_X45Y157        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.866 r  full_render/pipe_vcount2/BRAM_reg_0_0_i_4/CO[3]
+                         net (fo=1, routed)           0.000     6.866    full_render/pipe_vcount2/BRAM_reg_0_0_i_4_n_0
+    SLICE_X45Y158        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     7.179 f  full_render/pipe_vcount2/BRAM_reg_0_0_i_3/O[3]
+                         net (fo=71, routed)          1.521     8.700    full_render/lam/pixel/ram_addra1_out[0]
+    SLICE_X55Y136        LUT2 (Prop_lut2_I1_O)        0.306     9.006 r  full_render/lam/pixel/BRAM_reg_1_8_i_1/O
+                         net (fo=1, routed)           1.400    10.406    renderer_buffer/BRAM_reg_1_8_0[0]
+    RAMB36_X1Y22         RAMB36E1                                     r  renderer_buffer/BRAM_reg_1_8/WEA[0]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pixel_cw_hdmi rise edge)
+                                                     13.468    13.468 r  
+    E3                                                0.000    13.468 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    13.468    wizard_migcam/CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    14.879 r  wizard_migcam/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    16.060    wizard_migcam/clk_in1_cw_fast
+    PLLE2_ADV_X1Y2       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
+                                                     -7.856     8.204 r  wizard_migcam/plle2_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.634     9.838    wizard_migcam/clk_100_cw_fast
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     9.929 r  wizard_migcam/clkout1_buf/O
+                         net (fo=1, routed)           1.683    11.612    wizard_hdmi/sysclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.694     7.918 r  wizard_hdmi/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.923     9.841    wizard_hdmi/clk_pixel_cw_hdmi
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     9.932 r  wizard_hdmi/clkout1_buf/O
+                         net (fo=67629, routed)       1.535    11.468    renderer_buffer/clk_pixel
+    RAMB36_X1Y22         RAMB36E1                                     r  renderer_buffer/BRAM_reg_1_8/CLKARDCLK
+                         clock pessimism             -0.503    10.965    
+                         clock uncertainty           -0.210    10.755    
+    RAMB36_X1Y22         RAMB36E1 (Setup_ramb36e1_CLKARDCLK_WEA[0])
+                                                     -0.532    10.223    renderer_buffer/BRAM_reg_1_8
+  -------------------------------------------------------------------
+                         required time                         10.223    
+                         arrival time                         -10.406    
+  -------------------------------------------------------------------
+                         slack                                 -0.183    
+
+
+
+
